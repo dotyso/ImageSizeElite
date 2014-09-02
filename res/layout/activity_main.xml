@@ -1,0 +1,85 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+    
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/logo" />
+
+    
+    <Button
+        android:id="@+id/selectImage_button"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView"
+        android:layout_marginLeft="30dp"    
+        android:layout_marginTop="30dp"
+        android:background="#ff6600"
+        android:padding="10dp"
+        android:textSize="14dp"    
+		android:textColor="#ffffff"
+        android:text=" 打开图片 " />
+    
+
+    <Button
+        android:id="@+id/optionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/selectImage_button"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@+id/selectImage_button"
+        android:layout_marginLeft="5dp"        
+        android:layout_marginRight="30dp"
+        android:background="#ff6600"
+        android:padding="10dp"
+        android:text=" 压缩设置 "
+        android:textColor="#ffffff"
+        android:textSize="14dp" />
+        
+    <Button
+        android:id="@+id/actionButton"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/selectImage_button"
+        android:layout_alignRight="@+id/optionButton"
+        android:layout_below="@+id/selectImage_button"
+        android:layout_marginTop="10dp"
+        android:background="#ff6600"
+        android:padding="10dp"
+        android:text=" 执行压缩 "
+        android:textColor="#ffffff"
+        android:textSize="14dp" />
+
+    <Button
+        android:id="@+id/shareButton"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="20dp"        
+        android:layout_marginRight="30dp"
+        android:background="#ff6600"
+		android:textSize="13dp"
+        android:padding="1dp"		
+        android:textColor="#ffffff"		
+        android:text=" 分享 " />    
+
+
+    <RelativeLayout
+		android:id="@+id/adcontainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+		android:layout_centerHorizontal="true"        
+
+        >
+        
+    </RelativeLayout>
+
+</RelativeLayout>
