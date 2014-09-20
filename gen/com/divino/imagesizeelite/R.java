@@ -17,12 +17,13 @@ public final class R {
     }
     public static final class id {
         public static final int TextView2=0x7f07000d;
-        public static final int about_menuitem=0x7f070015;
+        public static final int about_menuitem=0x7f070016;
         public static final int actionButton=0x7f070007;
         public static final int adcontainer=0x7f070009;
         public static final int authortextView=0x7f070002;
         public static final int emailtextView=0x7f070003;
         public static final int feedbackButton=0x7f070001;
+        public static final int gallary_menuitem=0x7f070015;
         public static final int imageView=0x7f070004;
         public static final int imageView1=0x7f070000;
         public static final int lengthCheckBox=0x7f07000b;

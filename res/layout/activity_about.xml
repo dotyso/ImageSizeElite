@@ -33,7 +33,7 @@
 		    android:layout_below="@+id/imageView1"
 		    android:layout_centerHorizontal="true"
 		    android:layout_marginTop="20dp"
-		    android:text="yang, shuai"
+		    android:text="yang shuai"
 		    android:textAlignment="center"
 		    android:textSize="13dp" />
 

@@ -13,6 +13,8 @@ import com.divino.imagesizeelite.R;
 
 
 
+import android.media.MediaScannerConnection;
+import android.media.MediaScannerConnection.MediaScannerConnectionClient;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -156,7 +158,7 @@ public class MainActivity extends Activity {
 		RelativeLayout.LayoutParams layout = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 		layout.addRule(RelativeLayout.CENTER_HORIZONTAL);
 		mAdview.setLayoutParams(layout);
-		mAdview.setAdSize(DomobAdView.INLINE_SIZE_600X94);
+		mAdview.setAdSize(DomobAdView.INLINE_SIZE_FLEXIBLE);
 		mAdContainer.addView(mAdview);
 
 	}
@@ -188,6 +190,9 @@ public class MainActivity extends Activity {
 	Button.OnClickListener selectImageButtonOnClick = new Button.OnClickListener(){
 		@Override
 		public void onClick(View v) {
+			
+			mShareButton.setVisibility(View.INVISIBLE);
+			
 			Intent intent = new Intent();  
             /* 开启Pictures画面Type设定为image */  
             intent.setType("image/*");  
@@ -301,6 +306,10 @@ public class MainActivity extends Activity {
 	}
 
 	//菜单项被选中时执行该方法
+	 
+	 private MediaScannerConnection conn;
+	 private String SCAN_PATH;
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem menuItem) {
 		switch (menuItem.getItemId()) {
@@ -309,7 +318,30 @@ public class MainActivity extends Activity {
 				intent.setClass(mContext, AboutActivity.class);
 				startActivity(intent);  
 				break;
+			case R.id.gallary_menuitem:
+
+				Intent intent2 = new Intent();
+				intent2.setAction(android.content.Intent.ACTION_VIEW);
+				File file = new File(Environment.getExternalStorageDirectory().toString()+"/ImageResizeElite/");
+				intent2.setDataAndType(Uri.fromFile(file), "image/*");
+				startActivity(intent2);
+				
+				/*
+				File folder = new File(Environment.getExternalStorageDirectory().toString()+"/ImageResizeElite/");
+				String[] allFiles = folder.list();
+
+				SCAN_PATH = Environment.getExternalStorageDirectory().toString()+"/ImageResizeElite/"+allFiles[0];
+				if (conn != null)
+			    {
+					conn.disconnect();
+			    }
+			    conn = new MediaScannerConnection(this,this);
+			    conn.connect();
+			    */
+				break;
 	    }
 	    return true;
 	}
+	
+	
 }
