@@ -3,7 +3,7 @@
  <item  
         android:id="@+id/gallary_menuitem"  
         android:showAsAction="never"  
-        android:title="图库"/> 
+        android:title="打开压缩图库"/> 
  <item  
         android:id="@+id/about_menuitem"  
         android:showAsAction="never"  

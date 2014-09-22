@@ -320,28 +320,28 @@ public class MainActivity extends Activity {
 				break;
 			case R.id.gallary_menuitem:
 
-				Intent intent2 = new Intent();
-				intent2.setAction(android.content.Intent.ACTION_VIEW);
-				File file = new File(Environment.getExternalStorageDirectory().toString()+"/ImageResizeElite/");
-				intent2.setDataAndType(Uri.fromFile(file), "image/*");
-				startActivity(intent2);
+				try {
+					File folder = new File(Environment.getExternalStorageDirectory().toString()+"/ImageResizeElite/");
+					String[] allFiles = folder.list();
+					SCAN_PATH = Environment.getExternalStorageDirectory().toString()+"/ImageResizeElite/"+allFiles[0];
+					
+					Intent intent2 = new Intent();
+					intent2.setAction(android.content.Intent.ACTION_VIEW);
+					File file = new File(SCAN_PATH);
+					intent2.setDataAndType(Uri.fromFile(file), "image/*");
+					startActivity(intent2);
+				}
+				catch (Exception ex) {
+					Toast.makeText(mContext, "´ò¿ªÑ¹ËõÍ¼¿âÊ§°Ü", Toast.LENGTH_LONG);
+				}
+				finally {
+					
+				}
 				
-				/*
-				File folder = new File(Environment.getExternalStorageDirectory().toString()+"/ImageResizeElite/");
-				String[] allFiles = folder.list();
-
-				SCAN_PATH = Environment.getExternalStorageDirectory().toString()+"/ImageResizeElite/"+allFiles[0];
-				if (conn != null)
-			    {
-					conn.disconnect();
-			    }
-			    conn = new MediaScannerConnection(this,this);
-			    conn.connect();
-			    */
+				
 				break;
 	    }
 	    return true;
 	}
-	
-	
+
 }

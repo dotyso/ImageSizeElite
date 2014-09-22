@@ -4,7 +4,10 @@ import com.divino.imagesizeelite.R;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -40,6 +43,19 @@ public class OptionActivity extends Activity {
 		mSizeEditText = (EditText)this.findViewById(R.id.sizeEditText);
 		mRatioEditText = (EditText)this.findViewById(R.id.ratioEditText);
 		
+		SharedPreferences sharedPreferences = getSharedPreferences("ImageSizeElite", Context.MODE_PRIVATE); //私有数据
+		mLengthCheckBox.setChecked(Boolean.valueOf(sharedPreferences.getString("lengthEnabled", "false")));
+		mLengthEditBox.setText(sharedPreferences.getString("length", "800"));
+		
+		boolean sizeEnabled = Boolean.valueOf(sharedPreferences.getString("sizeEnabled", "true"));
+		if (sizeEnabled)
+			mSizeRadio.setChecked(true);
+		else
+			mRatioRadio.setChecked(true);
+			
+		mSizeEditText.setText(sharedPreferences.getString("size", "512"));
+		mRatioEditText.setText(sharedPreferences.getString("ratio", "80"));
+
 	}
 
 	/*
@@ -71,6 +87,16 @@ public class OptionActivity extends Activity {
 				intent.putExtra("ratio", mRatioEditText.getText().toString());
 			else
 				intent.putExtra("ratio", "-1");
+			
+			
+			SharedPreferences sharedPreferences = getSharedPreferences("ImageSizeElite", Context.MODE_PRIVATE); //私有数据
+			Editor editor = sharedPreferences.edit();															//获取编辑器
+			editor.putString("lengthEnabled", String.valueOf(mLengthCheckBox.isChecked()));
+			editor.putString("sizeEnabled", String.valueOf(mSizeRadio.isChecked()));
+			editor.putString("length", mLengthEditBox.getText().toString());
+			editor.putString("size", mSizeEditText.getText().toString());
+			editor.putString("ratio", mRatioEditText.getText().toString());			
+			editor.commit();
 			
 			setResult(RESULT_OK, intent);  
 			finish();
